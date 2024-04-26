@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .container {
+            max-width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container ">
+        <div class="card-body p-5 ">
+
+            <form action="/p/create" method="post">
+                <h1 class="text-center ">Insert produk</h1>
+                <hr />
+
+                {{if .pesan}}
+                <div class="alert alert-success">Submit berhasil <a href="/"><u>klik disini untuk kembali</u></a>
+                </div>
+                {{end}}
+
+                {{if .error}}
+                <div class="alert alert-danger">{{.error}}</a>
+                </div>
+                {{if .errormsg}}
+                <a href="/login" class="btn btn-primary">login</a>
+                {{end}}
+                {{else}}
+
+
+
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nama Produk</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                        placeholder="contoh:Nasi goreng" name="nama">
+
+                    {{if .errorname_produk}}
+                    <br>
+                    <div class="alert alert-danger"> {{.errorname_produk}}</div>
+                    {{end}}
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Category</label>
+                    <select class="form-select" aria-label="wearable" name="category">
+                        <option selected>etc</option>
+                        <option value="electric">electric</option>
+                        <option value="consumable">consumable</option>
+                        <option value="etc">etc</option>
+                    </select>
+                </div>
+                {{if .errorcategory}}
+                <br>
+                <div class="alert alert-danger"> {{.errorcategory}}</div>
+                {{end}}
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Harga</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="contoh:1000"
+                        name="harga">
+                </div>
+                {{if .errorharga}}
+                <br>
+                <div class="alert alert-danger"> {{.errorharga}}</div>
+                {{end}}
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Stock</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="contoh:1000"
+                        name="quantity">
+                </div>
+                {{if .errorquantity}}
+                <br>
+                <div class="alert alert-danger"> {{.errorquantity}}</div>
+                {{end}}
+
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        name="deskripsi"></textarea>
+                </div>
+
+                {{if .errordeskripsi}}
+                <br>
+                <div class="alert alert-danger"> {{.errordeskripsi}}</div>
+                {{end}}
+
+
+
+
+
+
+
+
+
+                <div class="d-grid gap-2 d-md-block mt-5">
+                    <button type="submit" class="btn btn-success btn-lg">submit</button>
+                </div>
+
+                <hr />
+                <center>
+                    <p>Sudah punya akun?<a href="/createp"><u>Login</u></a></p>
+                </center>
+                {{end}}
+            </form>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

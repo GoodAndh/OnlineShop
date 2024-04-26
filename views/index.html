@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+
+    <script>
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.forEach(el => el.classList.remove("active"));
+                link.classList.add("active");
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark  ">
+        <div class="container-fluid ">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse r" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+
+
+                    <a class="nav-link " href="/"> Home</a>
+
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+
+        <div class="row mt-3 justify-content-center">
+            <div class="col-md-8">
+
+                <h1 class="text-center">Toko Sopedia</h1>
+
+                <form action="/" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="namaproduk" placeholder="Cari produk" value="">
+                        <button class="btn btn-outline-success" type="submit" id="button-addon2">Search</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="container ">
+
+        <div class="mt-5">
+            {{if .error}}
+            <div class="alert alert-danger">
+                <h1>{{.error}}</h1>
+                {{if .errormsg}}
+                <a href="/login" class="btn btn-primary">login</a>
+                {{end}}
+                {{if .all}}
+                <br>
+                <a href="/" class="btn btn-primary">balik ke menu awal</a>
+                {{end}}
+            </div>
+            {{end}}
+        </div>
+
+
+            <div class="row  ">
+                {{range $v := .data}}
+                <div class="col-md-4">
+                    {{if $v.nama}}
+                    <div class="card mb-3">
+                        <img src="..." class="card-img-top" alt="gambar">
+                        <div class="card-body">
+                            <h2 class="card-title text-center">{{$v.nama}} </h2>
+                            <p class="card-text">{{$v.deskripsi}} </p>
+                            <p class="card-text">Rp.{{$v.harga}}</p>
+                            <p class="card-text">stock:{{$v.quantity}}</p>
+                            <p class="card-text">{{$v.category}}</p>
+                            {{if $v.button}}
+                            <a href="/p/g={{$v.namap}}" class="btn btn-primary">lihat selengkapnya</a>
+                            {{end}}
+                        
+                        </div>
+                    </div>
+                    {{end}}
+
+                </div>
+
+                {{end}}
+            </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
