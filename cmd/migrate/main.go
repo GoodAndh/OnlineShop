@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"os"
-	"restful/app"
+	"ddd2/app"
 
 	myCfg "github.com/go-sql-driver/mysql"
 	"github.com/golang-migrate/migrate/v4"
@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	db, err := app.MysqlDb(myCfg.Config{
+	db, err := app.NewMysqlDb(myCfg.Config{
 		User:   "root",
 		Passwd: "r23password",
 		Net:    "tcp",
